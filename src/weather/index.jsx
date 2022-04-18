@@ -11,7 +11,6 @@ function WeatherApp() {
       try {
         const response = await weatherApi.cityWeather(city);
         setWeatherData(response);
-        console.log(weatherdata);
       } catch (error) {
         console.log(error);
       }
@@ -26,16 +25,6 @@ function WeatherApp() {
     const name = e.target.value;
     setInput(name);
   };
-
-  useEffect(() => {
-    if (localStorage.getItem(city)) {
-      setInput(localStorage.getItem(city));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem(input, city);
-  }, [city]);
 
   function convTime(time) {
     const unix_timestamp = time;
