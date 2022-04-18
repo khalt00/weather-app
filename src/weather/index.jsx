@@ -4,19 +4,27 @@ import React, { useState, useEffect } from "react";
 function WeatherApp() {
   const [city, setCity] = useState("Nha Trang");
   const [weatherdata, setWeatherData] = useState({});
+  const [input, setInput] = useState("");
 
   useEffect(() => {
     (async () => {
       try {
-        const response = await weatherApi.cityWeather("Nha Trang");
-        console.log(response);
+        const response = await weatherApi.cityWeather(city);
         setWeatherData(response);
-        console.log("data tra ve:");
       } catch (error) {
         console.log(error);
       }
     })();
-  }, []);
+  }, [city]);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setCity(input);
+  };
+  const handleGetValue = (e) => {
+    const name = e.target.value;
+    setInput(name);
+  };
+
   function convTime(time) {
     const unix_timestamp = time;
     // Create a new JavaScript Date object based on the timestamp
@@ -28,20 +36,25 @@ function WeatherApp() {
     const minutes = date.getMinutes().toString();
     // Seconds part from the timestamp
     const seconds = date.getSeconds().toString();
-
     // Will display time in 10:30:23 format
     const formattedTime = hours + ":" + minutes + ":" + seconds;
 
-    console.log(formattedTime);
     return formattedTime;
   }
 
   return (
     <>
-      <div className="search">
-        <input className="search__bar" />
-        <button className="btn__search">search</button>
-      </div>
+      <form className="search" onSubmit={handleSubmit}>
+        <input
+          className="search__bar"
+          placeholder="Hãy nhập tên thành phố"
+          value={input}
+          onChange={handleGetValue}
+        />
+        <button type="submit" className="btn__search">
+          search
+        </button>
+      </form>
       <div className="card">
         <div className="card__head">
           <h1 className="city__name">{weatherdata.name ?? ""}</h1>
