@@ -4,58 +4,81 @@ body {
 }
 .search {
   margin: auto;
-  align-self: center;
-  width: 19rem;
-}
-.date {
-  color: white;
-  text-align: center;
-  font-size: 20px;
-}
-.temp {
-  color: floralwhite;
-  text-align: center;
-  font-size: 40px;
+  align-items: center;
+  width: 17rem;
+  padding-bottom: 5px;
 }
 
-.sun__rise {
-  color: #3c1053ff;
-  text-align: center;
-  font-size: 25px;
-}
-
-.sun__set {
-  color: #3c1053ff;
-  text-align: center;
-  font-size: 25px;
-}
-
-.card {
-  font-family: "Times New Roman", Times, serif;
-
-  width: 20rem;
-  height: 40rem;
-  margin: 0rem auto;
-  background-image: url(./assets/images/warm-bg.jpg);
-}
-
-.city__name {
-  color: #fff;
-  text-align: center;
-}
-.card__inside {
-  text-align: center;
+.search__bar {
+  border-radius: 5px;
+  border-style: none;
+  height: 30px;
+  font-style: italic;
 }
 
 button {
   font-family: "Asap", sans-serif;
   cursor: pointer;
-  color: darkgray;
   font-size: 20px;
   margin-top: 7rem;
   text-transform: uppercase;
   background-color: rgba(244, 91, 105, 1);
   color: #fff;
   border-radius: 5px;
-  width: 120px;
+  width: 100px;
+  padding-bottom: 7px;
+}
+
+.date {
+  color: white;
+  text-align: center;
+  font-size: 20px;
+}
+
+.card {
+  font-family: "Times New Roman", Times, serif;
+  border-radius: 15px;
+  width: 20rem;
+  height: 40rem;
+  margin: 0rem auto;
+  background-image: url(./assets/images/warm-bg.jpg);
+  text-align: center;
+}
+/* .card_cold {
+  background-image: url(./assets/images/cold.jpg);
+} */
+.city__name {
+  color: #fff;
+
+  text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+}
+
+.temp {
+  color: floralwhite;
+  display: inline-block;
+  position: relative;
+  margin: 25px auto;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+
+  font-size: 50px;
+  text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+}
+
+.sun__rise {
+  color: #3c1053ff;
+
+  text-shadow: 1px 1px rgb(243, 240, 240, 0.5);
+  font-size: 25px;
+}
+
+.sun__set {
+  color: #3c1053ff;
+
+  font-size: 25px;
+  text-shadow: 1px 1px rgb(243, 240, 240, 0.5);
+}
+
+.status {
+  color: ;
 }

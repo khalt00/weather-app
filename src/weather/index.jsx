@@ -19,6 +19,7 @@ function WeatherApp() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setCity(input);
+    setInput("");
   };
   const handleGetValue = (e) => {
     const name = e.target.value;
@@ -42,42 +43,49 @@ function WeatherApp() {
     return formattedTime;
   }
 
+  const images_link = (icon) => {
+    return `http://openweathermap.org/img/wn/${icon}@2x.png`;
+  };
   return (
     <>
       <form className="search" onSubmit={handleSubmit}>
-        <input
-          className="search__bar"
-          placeholder="Hãy nhập tên thành phố"
-          value={input}
-          onChange={handleGetValue}
-        />
-        <button type="submit" className="btn__search">
-          search
-        </button>
+        <div className="search__part">
+          <input
+            className="search__bar"
+            placeholder="Hãy nhập tên thành phố"
+            value={input}
+            onChange={handleGetValue}
+          />
+          <button type="submit" className="btn__search">
+            search
+          </button>
+        </div>
       </form>
       <div className="card">
         <div className="card__head">
-          <h1 className="city__name">{weatherdata.name ?? ""}</h1>
-
+          <h1 className="city__name">
+            {weatherdata.name ?? ""},{weatherdata?.sys?.country}
+          </h1>
+          <img src={images_link(weatherdata.weather[0].icon)} />
           <div className="card__info">
             <div className="date">
               {Date(weatherdata.dt).substring(-10, 25)}
             </div>
             <div className="temp">
-              Nhiệt độ: {(weatherdata?.main?.temp - 273.15).toFixed(0)} &#8451;
+              {(weatherdata?.main?.temp - 273.15).toFixed(0)} &#8451;
             </div>
             <div className="sun">
               <div className="sun__rise">
-                Mặt trời mọc:
+                Sunrise:
                 {convTime(weatherdata?.sys?.sunrise)}
               </div>
               <div className="sun__set">
-                Mặt trời lặn:
+                Sunset:
                 {convTime(weatherdata?.sys?.sunset)}
               </div>
             </div>
-            <div className="visibility"></div>
-            <div></div>
+            <div className="status">{weatherdata?.weather[0].main}</div>
+            <div className="wind"></div>
           </div>
         </div>
       </div>
