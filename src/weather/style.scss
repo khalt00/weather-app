@@ -1,0 +1,81 @@
+.search {
+  margin: auto;
+  align-items: center;
+  width: 17rem;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+.search__bar {
+  border-radius: 5px;
+  border-style: none;
+  height: 30px;
+  font-style: italic;
+}
+
+button {
+  font-family: "Asap", sans-serif;
+  cursor: pointer;
+  font-size: 20px;
+  margin-top: 7rem;
+  text-transform: uppercase;
+  background-color: rgba(244, 91, 105, 1);
+  color: #fff;
+  border-radius: 5px;
+  width: 100px;
+  padding-bottom: 7px;
+  display: inline-block;
+  text-align: center;
+}
+
+.date {
+  color: gray;
+  text-align: center;
+  font-size: 20px;
+}
+
+.card {
+  font-family: "Times New Roman", Times, serif;
+  border-radius: 15px;
+  width: 20rem;
+  height: 40rem;
+  margin: 0rem auto;
+  background-image: url(./assets/images/warm-bg.jpg);
+  text-align: center;
+}
+.card_cold {
+  background-image: url(./assets/images/cold-bg.jpg);
+}
+.city__name {
+  color: gray;
+  text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
+}
+
+.temp {
+  color: gray;
+  display: inline-block;
+  position: relative;
+  margin: 25px auto;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+
+  font-size: 50px;
+  text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
+}
+
+.sun__rise {
+  color: #3c1053ff;
+
+  text-shadow: 1px 1px rgb(243, 240, 240, 0.5);
+  font-size: 25px;
+}
+
+.sun__set {
+  color: #3c1053ff;
+
+  font-size: 25px;
+  text-shadow: 1px 1px rgb(243, 240, 240, 0.5);
+}
+.status {
+  font-size: 40px;
+}

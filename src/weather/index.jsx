@@ -2,7 +2,7 @@ import weatherApi from "../server/api";
 import React, { useState, useEffect } from "react";
 
 function WeatherApp() {
-  const [city, setCity] = useState("Nha Trang");
+  const [city, setCity] = useState("");
   const [weatherdata, setWeatherData] = useState({});
   const [input, setInput] = useState("");
 
@@ -11,6 +11,7 @@ function WeatherApp() {
       try {
         const response = await weatherApi.cityWeather(city);
         setWeatherData(response);
+        console.log(weatherdata);
       } catch (error) {
         console.log(error);
       }
@@ -25,6 +26,16 @@ function WeatherApp() {
     const name = e.target.value;
     setInput(name);
   };
+
+  useEffect(() => {
+    if (localStorage.getItem(city)) {
+      setInput(localStorage.getItem(city));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(input, city);
+  }, [city]);
 
   function convTime(time) {
     const unix_timestamp = time;
@@ -61,33 +72,46 @@ function WeatherApp() {
           </button>
         </div>
       </form>
-      <div className="card">
-        <div className="card__head">
-          <h1 className="city__name">
-            {weatherdata.name ?? ""},{weatherdata?.sys?.country}
-          </h1>
-          <img src={images_link(weatherdata.weather[0].icon)} />
-          <div className="card__info">
-            <div className="date">
-              {Date(weatherdata.dt).substring(-10, 25)}
-            </div>
-            <div className="temp">
-              {(weatherdata?.main?.temp - 273.15).toFixed(0)} &#8451;
-            </div>
-            <div className="sun">
-              <div className="sun__rise">
-                Sunrise:
-                {convTime(weatherdata?.sys?.sunrise)}
+      <div
+        className={
+          (weatherdata?.main?.temp - 273.15).toFixed(0) < 16
+            ? "card_cold"
+            : "card"
+        }
+      >
+        {typeof weatherdata.weather != "undefined" ? (
+          <div className="card__head">
+            <h1 className="city__name">
+              {weatherdata.name ?? ""},{weatherdata?.sys?.country}
+            </h1>
+            <img
+              src={images_link(weatherdata?.weather[0]?.icon)}
+              alt="discript of the weather"
+            />
+            <div className="status">{weatherdata?.weather[0]?.main}</div>
+            <div className="card__info">
+              <div className="date">
+                {Date(weatherdata.dt).substring(-10, 25)}
               </div>
-              <div className="sun__set">
-                Sunset:
-                {convTime(weatherdata?.sys?.sunset)}
+              <div className="temp">
+                {(weatherdata?.main?.temp - 273.15).toFixed(0)} &#8451;
               </div>
+              <div className="sun">
+                <div className="sun__rise">
+                  Sunrise:
+                  {convTime(weatherdata?.sys?.sunrise)}
+                </div>
+                <div className="sun__set">
+                  Sunset:
+                  {convTime(weatherdata?.sys?.sunset)}
+                </div>
+              </div>
+              <div className="wind"></div>
             </div>
-            <div className="status">{weatherdata?.weather[0].main}</div>
-            <div className="wind"></div>
           </div>
-        </div>
+        ) : (
+          ""
+        )}
       </div>
     </>
   );
