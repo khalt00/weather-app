@@ -1,0 +1,37 @@
+html {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 0;
+}
+body {
+  margin: 0;
+  font-family: "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", "メイリオ",
+    "Meiryo, Osaka", "ＭＳ Ｐゴシック", "MS PGothic", "sans-serif" !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgb(250, 250, 250);
+  color: rgba(0, 0, 0, 0.87);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+#root {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 0;
+}
+.App {
+  overflow: hidden;
+  background-color: rgb(250, 250, 250);
+  color: rgba(0, 0, 0, 0.87);
+}
